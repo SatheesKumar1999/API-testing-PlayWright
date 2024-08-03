@@ -88,7 +88,7 @@ test('Delete the Article using API', async({page, request})=>{
 })
 const responseBody=await response.json()
 const accessToken=responseBody.user.token
-  //await page.getByText('Global Feed').click()...doing this action by using API
+  //await page.getByText('Global Feed').click()...below is the API request for Click action on "Global feed" in web page 
   await request.get('https://conduit-api.bondaracademy.com/api/articles?limit=10&offset=0', {
     headers:{
       authorization:`Token ${accessToken}`
