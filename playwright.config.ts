@@ -33,12 +33,12 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    {name:"setup", testMatch:"auth.setup.ts"},
+    {name:"setup", testMatch:"auth.setup.ts"},// i'm adding this for authentication state for login
     
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'], storageState:".auth/user.json" },
-      dependencies:["setup"]
+      use: { ...devices['Desktop Chrome'], storageState:".auth/user.json" /*i'madding this for authentication state for login*/},
+      dependencies:["setup"]//i'm adding this for authentication state for login
     },
 
     {

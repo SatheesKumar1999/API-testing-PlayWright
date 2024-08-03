@@ -19,13 +19,13 @@ test.beforeEach(async ({page})=>{
   /* await page.getByText(' Sign in ').click()
    await page.getByRole('textbox', {name:"Email"}).fill('sathees0002@gmail.com')
    await page.getByRole('textbox', {name:"Password"}).fill('Sath@1234')
-   await page.getByRole('button', {name:"Sign in"}).click()**/
+   await page.getByRole('button', {name:"Sign in"}).click()**/ //we just commant as we have authentication state
 })
 
 test ('Modify the response', async({page})=>{
     await page.route('*/**/api/articles*', async route=>{
         const response= await route.fetch()//to get/fetch the response
-        const responseBody=await response.json()//to store as a body
+        const responseBody=await response.json()//to store  as a body
         responseBody.articles[0].title='this is pw test'//reinitialize/modified in responsebody
         responseBody.articles[0].description='this is a test'
     
@@ -66,7 +66,7 @@ await page.getByText('Global Feed').click()
 await expect(page.locator('app-article-list')).not.toContainText('Title Test')
 
 })
-
+//intercept API response---58
 test('Delete the Article using API', async({page, request})=>{
   await page.getByText('New Article').click()
   await page.getByRole('textbox', {name:"Article Title"}).fill('Deleting the Article')
@@ -74,7 +74,7 @@ test('Delete the Article using API', async({page, request})=>{
   await page.getByRole('textbox', {name:"Write your article (in markdown)"}).fill('Deleting the Article by API request')
   await page.getByRole('button').click()
    //intercept the response and taking the slug of the article, why we are taking this slug becuase slug is a uniq ID and we need to use yhis slug during delete req.
-  const articleresponse=await page.waitForResponse('https://conduit-api.bondaracademy.com/api/articles/')
+  const articleresponse=await page.waitForResponse('https://conduit-api.bondaracademy.com/api/articles/')//waiting for the API
   const articleresponseBody=await articleresponse.json()
   const articleID=articleresponseBody.article.slug
 
