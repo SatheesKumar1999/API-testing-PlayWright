@@ -73,7 +73,7 @@ test('Delete the Article using API', async({page, request})=>{
   await page.getByRole('textbox', {name:"What's this article about?"}).fill('Deleting the Article by API')
   await page.getByRole('textbox', {name:"Write your article (in markdown)"}).fill('Deleting the Article by API request')
   await page.getByRole('button').click()
-   //intercept the response and taking the slug of the article, why we are taking this slug becuase slug is a uniq ID and we need to use yhis slug during delete req.
+   //intercept the response and taking the slug of the article, why we are taking this slug because slug is a uniq ID and we need to use yhis slug during delete req.
   const articleresponse=await page.waitForResponse('https://conduit-api.bondaracademy.com/api/articles/')//waiting for the API
   const articleresponseBody=await articleresponse.json()
   const articleID=articleresponseBody.article.slug
